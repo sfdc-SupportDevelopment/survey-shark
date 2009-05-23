@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>R00N40000001JA4xEAG</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Invite_Code__c</fullName>
+        <description>Holds the code to locate the incoming user</description>
+        <label>Invite Code</label>
+        <length>255</length>
+        <type>Text</type>
+    </fields>
+    <fields>
+        <fullName>Question_Obj__c</fullName>
+        <label>Question</label>
+        <referenceTo>Question__c</referenceTo>
+        <relationshipName>R00N40000001JAEsEAO</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Response_Bool__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Response Yes No</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Response__c</fullName>
+        <label>Response Text</label>
+        <length>255</length>
+        <type>Text</type>
+    </fields>
+    <label>Response</label>
+    <nameField>
+        <displayFormat>R-{0000}</displayFormat>
+        <label>Response</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Responses</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Question_Obj__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Contact__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Response__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields xsi:nil="true"/>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

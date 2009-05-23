@@ -1,0 +1,14 @@
+<apex:page standardcontroller="Survey__c" extensions="SurveyController"
+	id="thePage">
+
+	<apex:form >
+		<apex:pageBlock >
+			<p>This will remove all unused survey invitations and can be used
+			to close a survey from future input.</p>
+			<p>The invitations will be placed in the recycle bin where they
+			may or may not be recoverable.</p>
+			<p>If you are sure, click here : <apex:commandLink value="Delete Incomplete Invitations " action="{!closeSurvey}" /></p>
+		</apex:pageBlock>
+	</apex:form>
+
+</apex:page>

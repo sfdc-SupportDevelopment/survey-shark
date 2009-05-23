@@ -1,0 +1,98 @@
+<apex:page standardController="Contact" recordSetvar="people"
+	extensions="surveyInvite" >
+	<style>
+.detailList .lista tr td {
+	border-bottom: 1px solid #E3DEB8;
+	color: #333333;
+	padding: 2px 2px 2px 5px;
+	vertical-align: middle;
+}
+</style>
+	<apex:form >
+		<apex:sectionHeader title="Select Contacts to Invite"
+			subtitle="Survey : {!survey.name}" />
+
+		<apex:outputPanel id="preview" styleClass="center" layout="block">
+&nbsp;&nbsp; &nbsp;&nbsp;<b>View:</b>&nbsp;&nbsp; 
+
+	      <apex:selectList value="{!filterId}" size="1">
+				<apex:actionSupport event="onchange" action="{!changedFilter}"
+					rerender="preview" />
+				<apex:selectOptions value="{!listviewoptions}" />
+			</apex:selectList>
+				&nbsp;&nbsp; 
+				<span>{!resultSize} Contacts, Page : {!pagenumber} of
+			{!pageSize} </span>	
+				&nbsp;&nbsp; 
+
+				<apex:commandLink action="{!previousPage}" rendered="{!hasPrevious}"
+				rerender="preview">&lt;- Previous Page</apex:commandlink>&nbsp;&nbsp; 
+						<apex:commandLink action="{!nextPage}" rendered="{!hasNext}"
+					rerender="preview">Next Page -&gt;</apex:commandlink>
+
+
+					<p></p>
+
+					<apex:pageBlock title="Contacts to Invite">
+
+						<apex:pageBlockButtons >
+							<apex:commandButton value="{!buttonLabel}" id="buttons"
+								action="{!doSelAll}" rerender="list,buttons" />
+							<apex:commandButton value=" Create Invitations "
+								action="{!massInvite}" rerender="table,buttons"
+								 />
+
+
+						</apex:pageBlockButtons>
+						<apex:pageBlockSection columns="1">
+							<apex:pageblocktable id="list" var="a" value="{!cl}"
+								styleclass="lista">
+								<!--  header -->
+
+								<!--  columns -->
+								<apex:column >
+									<apex:inputCheckbox value="{!a.sel}" />
+								</apex:column>
+								<apex:column headerValue="Name">
+									<apex:outputText value="{!a.con.Name}" />
+								</apex:column>
+
+								<apex:column headerValue="Title">
+									<apex:outputText value="{!a.con.Title}" />
+								</apex:column>
+								<apex:column headerValue="Email">
+									<apex:outputText value="{!a.con.email}" />
+								</apex:column>
+								<apex:column headerValue="Account Name">
+									<apex:outputText value="{!a.con.Account.Name}" />
+								</apex:column>
+
+								<apex:column headerValue="City">
+									<apex:outputText value="{!a.con.MailingCity}" />
+								</apex:column>
+								<apex:column headerValue="State">
+									<apex:outputText value="{!a.con.MailingState}" />
+								</apex:column>
+
+							</apex:pageblocktable>
+						</apex:pageBlockSection>
+
+						<!--  <apex:panelGrid columns="3">
+							<span>{!resultSize} Contacts, Page : {!pagenumber} of
+							{!pageSize} </span>
+							<apex:commandLink action="{!previousPage}"
+								rendered="{!hasPrevious}" rerender="preview">&lt;- Previous</apex:commandlink>
+								<apex:commandLink action="{!nextPage}" rendered="{!hasNext}"
+									rerender="preview">Next -&gt;</apex:commandlink>
+						</apex:panelGrid> -->
+
+					</apex:pageBlock>
+		</apex:outputPanel>
+
+	</apex:form>
+
+	<div style="display: none;"><apex:dataList var="a"
+		value="{!people}" type="1">
+ {!a.Name} {!a.Account.Name} {!a.MailingCity} {!a.MailingState} {!a.Title} {!a.email}
+ </apex:dataList></div>
+</apex:page>

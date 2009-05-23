@@ -1,0 +1,44 @@
+<apex:page standardcontroller="Survey__c" extensions="SurveyController"
+	id="thePage" sidebar="false">
+	<style>
+textarea {
+	width: 450px;
+}
+.list td input { width: 45px; }
+</style>
+	<apex:form >
+		<apex:pageBlock >
+			<apex:pageBlockButtons >
+				<apex:commandButton action="{!addQuestions}" value=" Add Question "
+					rerender="theTable" />
+				<apex:commandButton action="{!saveQuestions}" value=" Save " />
+				<apex:commandButton action="{!saveAndClose}"
+					value=" Save and Close " />
+				<apex:commandButton action="{!cancel}" value=" Cancel " />
+				<!--  add new question button -->
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection >
+
+				<apex:pageblocktable value="{!questions}" var="q" id="theTable"
+					rowClasses="odd,even" styleClass="tableClass">
+					<apex:column headerValue="Order">
+						<apex:inputField value="{!q.Sort_Order__c}" />
+					</apex:column>
+					<apex:column headerValue="Question">
+						<apex:outputText value="{!q.name}" />
+					</apex:column>
+					<apex:column headerValue="Question Type">
+						<apex:inputField value="{!q.Type__c}" />
+					</apex:column>
+					
+					<apex:column width="50%" headerValue="Question Body">
+						<apex:inputField value="{!q.Question_Description__c}" />
+					</apex:column>
+					
+
+				</apex:pageblocktable>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+
+</apex:page>
