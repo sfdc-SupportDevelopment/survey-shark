@@ -1,0 +1,47 @@
+<apex:page >
+	<apex:pageblock >
+		<p>This is a simple example application, it demonstrates how to
+		build a survey app on Force.com and Sites.</p>
+
+
+		<p>A <b>Survey</b> object contains one or more <b>Question</b>
+		objects and forms the basis for the survey content.</p>
+
+		<p>The <b>Invitation</b> object asks a contact to attend to the
+		survey. This is the object that forms the basis for asking a contact
+		to fill in the data for a particular survey</p>
+
+		<p>Data is stored in <b>Response</b> objects when the survey is
+		complete</p>
+
+		<p>There are links for often performed operations.
+		<ul>
+			<li>A button to mass edit questions</li>
+			<li>a link to close a survey and delete outstanding invitations
+			, called close survey</li>
+
+			<li>a link on the invitation to preview / take the survey, this
+			can be included in email templates</li>
+
+			<li>a link to mass create invitations</li>
+			<li>a link to mass send invitations</li>
+
+		</ul>
+		</p>
+
+	</apex:pageblock>
+	<apex:pageblock >
+	<p>
+Setup steps after install so that the survey can be completed by contacts that 
+are invited to provide information:</p>
+<ul>
+			<li>The Force.com site user must be able to edit the invite
+			object</li>
+			<li>The Force.com site user must be able to create and edit the
+			response object</li>
+			<li>The Force.com site user must be able to read the survey and
+			question objects</li>
+
+		</ul>
+	</apex:pageblock>
+</apex:page>

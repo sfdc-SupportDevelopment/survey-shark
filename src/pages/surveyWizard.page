@@ -1,0 +1,102 @@
+<apex:page Controller="SurveyController" showheader="false"
+	cache="false" standardStylesheets="true">
+	<style>
+body {
+	padding: 4px;
+}
+
+tr {
+	height: 25px;
+}
+
+td {
+	vertical-align: top;
+}
+
+textarea {
+	width: 350px;
+}
+
+.ptBody {
+	background-color: #3333cc;
+}
+
+
+.list td td {
+	border-bottom: 0px solid #E3DEB8;
+	padding: 4px 2px 4px 5px;
+}
+</style>
+	<apex:form >
+		<apex:messages />
+
+		<apex:outputPanel rendered="{!Invitation.name == null}">
+
+			<apex:pageBlock >
+				<p>This Survey invitation has already been completed, thank you.
+				</p>
+			</apex:pageBlock>
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!Invitation.name != null}">
+
+			<apex:sectionHeader title="{!Invitation.Survey__r.Name}"
+				description="{!Invitation.Survey__r.Description__c}"
+				subtitle="Welcome : {!Invitation.Contact__r.Name}" />
+
+			<apex:pageBlock >
+
+				<apex:datatable value="{!surveyListPage}" var="si" width="100%"
+					id="table" rowClasses="odd,even" styleClass="list">
+					<apex:column value="{!si.question.Sort_Order__c}" />
+
+					<apex:column >&nbsp;
+						</apex:column>
+
+					<apex:column value="{!si.question.Question_Description__c}"
+						width="40%" />
+
+					<apex:column >&nbsp;
+						</apex:column>
+					<apex:column >
+
+						<apex:inputField value="{!si.response.Response_Number__c}"
+							rendered="{!si.question.Type__c == 'Integer'}" />
+
+						<apex:selectRadio value="{!si.response.Response_Number__c}"
+							rendered="{!si.question.Type__c == 'Radio'}">
+							<apex:selectOptions value="{!RadioItems}" />
+						</apex:selectRadio>
+
+						<apex:inputField value="{!si.response.Response_Date__c}"
+							rendered="{!si.question.Type__c == 'Date'}" />
+
+						<apex:inputField value="{!si.response.Response__c}"
+							rendered="{!si.question.Type__c == 'String'}" />
+
+						<apex:inputField value="{!si.response.Text_Area__c}"
+							rendered="{!si.question.Type__c == 'TextArea'}" />
+
+						<apex:inputField value="{!si.response.Response_Bool__c}"
+							rendered="{!si.question.Type__c == 'Boolean'}" />
+					</apex:column>
+
+					<apex:column value="{!si.question.Type__c}" rendered="false" />
+				</apex:datatable>
+				<apex:panelGrid id="buttons" columns="5" >
+
+					<apex:commandButton value=" Previous " action="{!previous}"
+						rendered="{!setCon.hasPrevious == true}" rerender="table,buttons" />
+					<apex:commandButton value=" Next " action="{!next}"
+						rendered="{!setCon.hasNext == true}" rerender="table,buttons" />
+					<apex:commandButton value=" Done " action="{!done}"
+						rendered="{!setCon.hasNext == false}" />
+					<apex:commandButton value=" Save and complete later "
+						action="{!saveForLater}" />
+					<apex:outputText >Page {!setCon.PageNumber} of {!TotalPages} </apex:outputText>
+				</apex:panelGrid>
+			</apex:pageBlock>
+		</apex:outputPanel>
+
+	</apex:form>
+</apex:page>

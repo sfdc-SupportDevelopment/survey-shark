@@ -1,0 +1,50 @@
+<apex:page standardController="Invitation__c"  
+	extensions="sendInvites"
+	recordSetVar="invites" 
+	><apex:form >
+
+	<apex:sectionHeader title="Select Invitataions to send"
+			subtitle="Survey : {!survey.name}" />
+Contacts with no email address will not appear in this list.
+<br />Select an email template from the Survey template folder : 
+ <apex:selectList id="chooseColor"  value="{!OptionsSelected}" size="1">
+  	 	 	<apex:selectOptions value="{!templateOptions}"/>
+  	 	</apex:selectList><p></p>
+  	 	
+		<apex:pageBlock title="Invitations to send">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="{!buttonLabel}" id="buttons"
+					action="{!doSelAll}" rerender="list,buttons" />
+					
+					<apex:commandButton value=" Email Invitations " 
+										action="{!massSend}" rerender="list,buttons" />
+			{!msg}
+			</apex:pageBlockButtons>
+			
+			 
+			<apex:pageBlockSection columns="1">
+			
+							<apex:pageblocktable id="list" var="a" value="{!inviteList}"
+								styleclass="lista">
+							<apex:column >
+									<apex:inputCheckbox value="{!a.sel}" />
+								</apex:column>
+							
+							<apex:column headerValue="Name">
+									<apex:outputText value="{!a.inv.contact__r.Name}" />
+							</apex:column>
+	
+							<apex:column headerValue="Email">
+								<apex:outputText value="{!a.inv.contact__r.Email}" />
+							</apex:column>
+
+							<apex:column headerValue="Sent Prior">
+								<apex:outputField value="{!a.inv.Invite_Sent__c}" />
+							</apex:column>
+
+				</apex:pageblocktable></apex:pageBlockSection>
+
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

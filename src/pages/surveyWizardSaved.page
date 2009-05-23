@@ -1,0 +1,11 @@
+<apex:page Controller="SurveyController" showheader="false" >
+	<apex:form >
+
+
+		<apex:pageBlock >
+			<strong>Your work has been saved. </strong>
+
+			<p>To resume the survey, please use the original link that you were sent and re-launch the survey.</p>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>
