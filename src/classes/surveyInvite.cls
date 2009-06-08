@@ -117,7 +117,7 @@ public class surveyInvite {
     	setcontroller.setPageNumber(pagenum);
     }
     
-    public Integer pageSize { get { return setcontroller.getresultSize() / setcontroller.getPageSize() ; }}
+    public Integer pageSize { get { return ((setcontroller.getresultSize() / setcontroller.getPageSize() ) + 1); }}
     public Survey__c survey { get; set; }
     
     /* 

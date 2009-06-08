@@ -1,5 +1,5 @@
 <apex:page standardController="Contact" recordSetvar="people"
-	extensions="surveyInvite" >
+	extensions="surveyInvite" tabStyle="Survey__c" >
 	<style>
 .detailList .lista tr td {
 	border-bottom: 1px solid #E3DEB8;
