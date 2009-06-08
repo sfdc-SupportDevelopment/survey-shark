@@ -82,7 +82,7 @@ public class SurveyController {
  
  public ApexPages.StandardSetController setCon {set; get;}
  
- public Integer TotalPages { get { return setCon.getResultSize() / setCon.getPageSize(); } }
+ public Integer TotalPages { get { return (setCon.getResultSize() / setCon.getPageSize()) + 1; } }
  private void loadQuestions() { 
  	questions = [ select id, name, type__c,question_description__c,Sort_Order__c from Question__c 
 				where Survey__c = :SurveyId order by sort_order__c ];

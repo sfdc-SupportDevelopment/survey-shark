@@ -1,9 +1,9 @@
 <apex:page >
 	<apex:pageblock >
-		<p>This is a simple example application, it demonstrates how to
+		<p>This is a useful example application, it demonstrates how to
 		build a survey app on Force.com and Sites.</p>
-
-
+<br />
+<h4>Objects included in this application</h4>
 		<p>A <b>Survey</b> object contains one or more <b>Question</b>
 		objects and forms the basis for the survey content.</p>
 
@@ -14,7 +14,7 @@
 		<p>Data is stored in <b>Response</b> objects when the survey is
 		complete</p>
 
-		<p>There are links for often performed operations.
+		<p>There are links or buttons for often performed operations.
 		<ul>
 			<li>A button to mass edit questions</li>
 			<li>a link to close a survey and delete outstanding invitations
@@ -28,20 +28,35 @@
 
 		</ul>
 		</p>
+<p>
+In addition to the objects, pages and code, the package includes two simple email templates that will allow you to customize your own email 
+invitaion templates.  These templates, and any template in the survey folder are available to be used by the link that allows you to send mass emails to 
+the contacts in the invite list.
+</p>
 
+<ul>
+<h4>Typical Usage</h4>
+<li>Build a Survey record that contains a description and a landing page ( thank you page), specify the number of questions per page</li>
+<li>Click the button on the Survey detail page to Edit Questions, add a few questions to your survey</li>
+<li>Click the button to create invitations that will be used to define who will be permited to take the survey</li>
+<li>Click the link to Send Invitations, this will allow you to specify the template and which invitations should be sent</li>
+<li>Build your own custom reports to summarize the responses as they roll in</li>
+</ul>
 	</apex:pageblock>
 	<apex:pageblock >
 	<p>
 Setup steps after install so that the survey can be completed by contacts that 
 are invited to provide information:</p>
 <ul>
-			<li>The Force.com site user must be able to edit the invite
-			object</li>
-			<li>The Force.com site user must be able to create and edit the
-			response object</li>
-			<li>The Force.com site user must be able to read the survey and
-			question objects</li>
-
+ 
+ <h4>The Force.com site user must have the following permissions enabled:</h4>
+			<li>Read and edit the invite	 object</li>
+			<li>Read, create and edit the	response object</li>
+			<li>Read the survey and	question objects</li>
+			<li>Read the Contact standard object</li>
 		</ul>
+		
+		<p>To edit the profile for the Force.com Site User profile, please click on Setup | Develop | Sites | the Site Label for your site, 
+		then look for the button labeled Public Access Settings.  Click this button then click Edit to adjust the site profile to include the above permissions. </p>
 	</apex:pageblock>
 </apex:page>
