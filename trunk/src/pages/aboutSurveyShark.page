@@ -3,7 +3,7 @@
 		<p>This is a useful example application, it demonstrates how to
 		build a survey app on Force.com and Sites.</p>
 <br />
-<h4>Objects included in this application</h4>
+<h4>Included in this application</h4>
 		<p>A <b>Survey</b> object contains one or more <b>Question</b>
 		objects and forms the basis for the survey content.</p>
 
@@ -33,30 +33,34 @@ In addition to the objects, pages and code, the package includes two simple emai
 invitaion templates.  These templates, and any template in the survey folder are available to be used by the link that allows you to send mass emails to 
 the contacts in the invite list.
 </p>
+<br />
+<h4>Typical Usage</h4><ul>
 
-<ul>
-<h4>Typical Usage</h4>
 <li>Build a Survey record that contains a description and a landing page ( thank you page), specify the number of questions per page</li>
 <li>Click the button on the Survey detail page to Edit Questions, add a few questions to your survey</li>
-<li>Click the button to create invitations that will be used to define who will be permited to take the survey</li>
+<li>Click the button to create invitations that will be used to define who will be requested to take the survey</li>
 <li>Click the link to Send Invitations, this will allow you to specify the template and which invitations should be sent</li>
 <li>Build your own custom reports to summarize the responses as they roll in</li>
 </ul>
-	</apex:pageblock>
-	<apex:pageblock >
+
 	<p>
-Setup steps after install so that the survey can be completed by contacts that 
-are invited to provide information:</p>
+	<br />
+<h4>Setup Steps</h4>
+<br />After install this package you must configure your site so that the survey can be completed by contacts that 
+are invited to provide information to be recorded in your database</p>
 <ul>
  
- <h4>The Force.com site user must have the following permissions enabled:</h4>
+ <strong>The Force.com site user must have the following permissions enabled:</strong>
 			<li>Read and edit the invite	 object</li>
 			<li>Read, create and edit the	response object</li>
 			<li>Read the survey and	question objects</li>
 			<li>Read the Contact standard object</li>
 		</ul>
 		
-		<p>To edit the profile for the Force.com Site User profile, please click on Setup | Develop | Sites | the Site Label for your site, 
-		then look for the button labeled Public Access Settings.  Click this button then click Edit to adjust the site profile to include the above permissions. </p>
+		<p>To edit the profile for the Force.com Site User profile, please click on 
+		<a href="/0DM/o" >Setup | Develop | Sites</a> | then click on the Site Label for your site. 
+		Locate and click on the button labeled Public Access Settings, then click Edit to 
+		adjust your site profile to include the above permissions.   
+		The profile should already have surveyWizard page listed in the allowed pages section.</p>
 	</apex:pageblock>
 </apex:page>
