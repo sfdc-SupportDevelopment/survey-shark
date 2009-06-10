@@ -1,0 +1,29 @@
+<apex:page standardController="Response__c" extensions="responseCon"
+	recordSetVar="responses" tabStyle="Survey__c" >
+	<apex:form >
+		<apex:sectionHeader title="Responses to Survey"
+			subtitle="Survey : {!survey.name}" />
+			
+			To see all of the responses from this survey and 
+			group by selected fields please build a 
+			report in the reports tab that will pull questions and 
+			responses.  This is just a quick view of the responses for this survey and is limited
+			to 200 records.
+				<br /><br />
+		<apex:pageBlock >
+
+			<apex:pageBlockTable value="{!surveyResponses}" var="resp">
+				<apex:column headerValue="Response Number" >
+				<a href="/{!resp.id}">{!resp.name}</a>
+				</apex:column>
+				<apex:column value="{!resp.Invitation__r.Contact__r.FirstName}" />
+				<apex:column value="{!resp.Invitation__r.Contact__r.LastName}" />
+				<apex:column value="{!resp.Question_Text__c}" />
+				<apex:column value="{!resp.Question_Type__c}" />
+				<apex:column value="{!resp.Summary__c}" />
+
+			</apex:pageBlockTable>
+
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>
